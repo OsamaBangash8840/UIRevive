@@ -135,7 +135,7 @@ export async function POST(req: Request) {
     }
     // 3. Ollama (if configured)
     else if (ollamaKey) {
-      const base = (process.env.OLLAMA_BASE_URL || "https://ollama.com").replace(/\/$/, "");
+      const base = (process.env.OLLAMA_BASE_URL || "http://localhost:11434").replace(/\/$/, "");
       const model = process.env.OLLAMA_MODEL || "llama3";
 
       const res = await fetch(`${base}/api/chat`, {
@@ -150,7 +150,7 @@ export async function POST(req: Request) {
             { role: "user", content: `Website URL: ${parsed.url}` },
           ],
         }),
-        signal: AbortSignal.timeout(60_000),
+        signal: AbortSignal.timeout(15_000),
       });
 
       if (!res.ok) {

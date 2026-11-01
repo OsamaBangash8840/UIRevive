@@ -30,8 +30,8 @@ export function AnalyzeClient() {
     if (!url || started.current) return;
     started.current = true;
 
-    const timer = setInterval(() => setStep((s) => Math.min(s + 1, STEPS.length - 1)), 1100);
-    const minDelay = new Promise((r) => setTimeout(r, 4500));
+    const timer = setInterval(() => setStep((s) => Math.min(s + 1, STEPS.length - 1)), 350);
+    const minDelay = new Promise((r) => setTimeout(r, 1200));
 
     const request = fetch("/api/analyze", {
       method: "POST",
